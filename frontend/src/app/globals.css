@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #6366f1; /* Indigo */
+  --primary-light: #818cf8;
+  --bg-gradient: linear-gradient(135deg, #f3f4f6 0%, #e0e7ff 100%);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a; /* Slate 900 */
+    --foreground: #f8fafc;
+    --primary: #818cf8;
+    --primary-light: #c7d2fe;
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    --glass-bg: rgba(30, 41, 59, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  transition: all 300ms;
+  background: var(--primary);
+  color: white;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.card-hover {
+  transition-property: all;
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Micro-animations */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pulseSoft {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.animate-pulse-soft {
+  animation: pulseSoft 3s infinite ease-in-out;
+}
