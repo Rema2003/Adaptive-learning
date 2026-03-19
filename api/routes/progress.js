@@ -12,7 +12,8 @@ router.post('/', async (req, res) => {
     // await log.save();
     
     // 2. Forward to Python Machine Learning Microservice
-    const aiResponse = await fetch('http://127.0.0.1:8000/analyze_progress', {
+    const PYTHON_SERVICE_URL = process.env.PYTHON_SERVICE_URL || 'http://127.0.0.1:8000';
+    const aiResponse = await fetch(`${PYTHON_SERVICE_URL}/analyze_progress`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

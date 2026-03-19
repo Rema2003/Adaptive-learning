@@ -11,7 +11,8 @@ export default function LessonPage({ params }: { params: Promise<{ slug: string 
   const handleAnswer = async (isCorrect: boolean) => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/progress', {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${API_URL}/api/progress`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
